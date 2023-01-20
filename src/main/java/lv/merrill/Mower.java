@@ -2,8 +2,18 @@ package lv.merrill;
 
 public class Mower {
 
-    public static Position execute(int x, int y, String direction, String instructions) {
-        if ("N".equals(direction) && "D".equals(instructions)) {
+    private int x;
+    private int y;
+    private String direction;
+
+    public Mower(int x, int y, String direction) {
+        this.x = x;
+        this.y = y;
+        this.direction = direction;
+    }
+
+    public Position execute(String instructions) {
+        if("N".equals(direction) && "D".equals(instructions)) {
             return new Position(x, y, "E");
         }
         if ("E".equals(direction) && "D".equals(instructions)) {

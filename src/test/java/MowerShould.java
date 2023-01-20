@@ -14,7 +14,9 @@ public class MowerShould {
             "E, N",
     })
     public void turn_left(String initialDirection, String expectedDirection) {
-        Position position = Mower.execute(0, 0, initialDirection, "G");
+        Mower mower = new Mower(0, 0, initialDirection);
+
+        Position position = mower.execute("G");
 
         Assertions.assertThat(position).isEqualTo(new Position(0, 0, expectedDirection));
     }
@@ -27,7 +29,9 @@ public class MowerShould {
             "W, N",
     })
     public void turn_right(String initialDirection, String expectedDirection) {
-        Position position = Mower.execute(0, 0, initialDirection, "D");
+        Mower mower = new Mower(0, 0, initialDirection);
+
+        Position position = mower.execute( "D");
 
         Assertions.assertThat(position).isEqualTo(new Position(0, 0, expectedDirection));
     }
