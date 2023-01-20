@@ -57,10 +57,6 @@ public class Mower {
         return position;
     }
 
-    public boolean isAt(Position position) {
-        return this.position.equals(position);
-    }
-
     public Position position() {
         return position;
     }
