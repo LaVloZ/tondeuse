@@ -1,8 +1,10 @@
 import lv.merrill.Mower;
 import lv.merrill.Position;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.InstanceOfAssertFactories.BOOLEAN;
 
 public class MowerShould {
 
@@ -16,9 +18,11 @@ public class MowerShould {
     public void turn_left(String initialDirection, String expectedDirection) {
         Mower mower = new Mower(new Position(0, 0, initialDirection));
 
-        Position position = mower.execute("G");
+        mower.execute("G");
 
-        Assertions.assertThat(position).isEqualTo(new Position(0, 0, expectedDirection));
+        assertThat(mower)
+                .extracting(m -> m.isAt(new Position(0, 0, expectedDirection)), BOOLEAN)
+                .isTrue();
     }
 
     @ParameterizedTest
@@ -31,9 +35,11 @@ public class MowerShould {
     public void turn_right(String initialDirection, String expectedDirection) {
         Mower mower = new Mower(new Position(0, 0, initialDirection));
 
-        Position position = mower.execute( "D");
+        mower.execute( "D");
 
-        Assertions.assertThat(position).isEqualTo(new Position(0, 0, expectedDirection));
+        assertThat(mower)
+                .extracting(m -> m.isAt(new Position(0, 0, expectedDirection)), BOOLEAN)
+                .isTrue();
     }
 
     @ParameterizedTest
@@ -46,8 +52,10 @@ public class MowerShould {
     public void forward(int initialX, int initialY, String initialDirection, int expectedX, int expectedY, String expectedDirection) {
         Mower mower = new Mower(new Position(initialX, initialY, initialDirection));
 
-        Position position = mower.execute( "A");
+        mower.execute( "A");
 
-        Assertions.assertThat(position).isEqualTo(new Position(expectedX, expectedY, expectedDirection));
+        assertThat(mower)
+                .extracting(m -> m.isAt(new Position(expectedX, expectedY, expectedDirection)), BOOLEAN)
+                .isTrue();
     }
 }

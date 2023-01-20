@@ -10,38 +10,54 @@ public class Mower {
 
     public Position execute(String instruction) {
         if("N".equals(position.direction()) && "A".equals(instruction)) {
-            return new Position(position.x(), position.y() + 1, "N");
+            position = new Position(position.x(), position.y() + 1, "N");
+            return position;
         }
         if("E".equals(position.direction()) && "A".equals(instruction)) {
-            return new Position(position.x() + 1, position.y(), "E");
+            position = new Position(position.x() + 1, position.y(), "E");
+            return position;
         }
         if("S".equals(position.direction()) && "A".equals(instruction)) {
-            return new Position(position.x(), position.y() - 1, "S");
+            position = new Position(this.position.x(), this.position.y() - 1, "S");
+            return position;
         }
         if("W".equals(position.direction()) && "A".equals(instruction)) {
-            return new Position(position.x() - 1, position.y(), "W");
+            position = new Position(this.position.x() - 1, this.position.y(), "W");
+            return position;
         }
         if("N".equals(position.direction()) && "D".equals(instruction)) {
-            return new Position(position.x(), position.y(), "E");
+            position = new Position(this.position.x(), this.position.y(), "E");
+            return position;
         }
         if ("E".equals(position.direction()) && "D".equals(instruction)) {
-            return new Position(position.x(), position.y(), "S");
+            position = new Position(position.x(), position.y(), "S");
+            return position;
         }
         if ("S".equals(position.direction()) && "D".equals(instruction)) {
-            return new Position(position.x(), position.y(), "W");
+            position = new Position(this.position.x(), this.position.y(), "W");
+            return position;
         }
         if ("W".equals(position.direction()) && "D".equals(instruction)) {
-            return new Position(position.x(), position.y(), "N");
+            position = new Position(this.position.x(), this.position.y(), "N");
+            return position;
         }
         if("E".equals(position.direction())){
-            return new Position(position.x(), position.y(), "N");
+            position = new Position(this.position.x(), this.position.y(), "N");
+            return position;
         }
         if("S".equals(position.direction())){
-            return new Position(position.x(), position.y(), "E");
+            position = new Position(this.position.x(), this.position.y(), "E");
+            return position;
         }
         if("W".equals(position.direction())){
-            return new Position(position.x(), position.y(), "S");
+            position = new Position(this.position.x(), this.position.y(), "S");
+            return position;
         }
-        return new Position(position.x(), position.y(), "W");
+        position = new Position(this.position.x(), this.position.y(), "W");
+        return position;
+    }
+
+    public boolean isAt(Position position) {
+        return this.position.equals(position);
     }
 }
