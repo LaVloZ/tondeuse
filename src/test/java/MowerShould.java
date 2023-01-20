@@ -25,6 +25,7 @@ public class MowerShould {
     @CsvSource({
             "N, E",
             "E, S",
+            "S, W",
     })
     public void turn_right(String initialDirection, String expectedDirection) {
         Position position = Mower.execute(0, 0, initialDirection, "D");
