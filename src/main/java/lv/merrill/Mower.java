@@ -13,6 +13,10 @@ public class Mower {
     }
 
     public Position execute(String instructions) {
+        if("N".equals(direction) && "A".equals(instructions)) {
+            return new Position(x + 1, y, "N");
+        }
+
         if("N".equals(direction) && "D".equals(instructions)) {
             return new Position(x, y, "E");
         }

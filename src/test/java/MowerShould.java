@@ -35,4 +35,16 @@ public class MowerShould {
 
         Assertions.assertThat(position).isEqualTo(new Position(0, 0, expectedDirection));
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "0, 0, N, 1, 0",
+    })
+    public void forward(int initialX, int initialY, String initialDirection, int expectedX, int expectedY) {
+        Mower mower = new Mower(initialX, initialY, initialDirection);
+
+        Position position = mower.execute( "A");
+
+        Assertions.assertThat(position).isEqualTo(new Position(expectedX, expectedY, initialDirection));
+    }
 }
