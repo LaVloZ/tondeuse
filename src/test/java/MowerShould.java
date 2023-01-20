@@ -26,6 +26,7 @@ public class MowerShould {
             "N, E",
             "E, S",
             "S, W",
+            "W, N",
     })
     public void turn_right(String initialDirection, String expectedDirection) {
         Position position = Mower.execute(0, 0, initialDirection, "D");
