@@ -38,8 +38,9 @@ public class MowerShould {
 
     @ParameterizedTest
     @CsvSource({
-            "0, 0, N, 1, 0",
-            "0, 0, E, 0, 1",
+            "0, 0, N, 0, 1",
+            "0, 0, E, 1, 0",
+            "0, 1, S, 0, 0",
     })
     public void forward(int initialX, int initialY, String initialDirection, int expectedX, int expectedY) {
         Mower mower = new Mower(initialX, initialY, initialDirection);
