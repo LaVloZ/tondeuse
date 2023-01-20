@@ -6,12 +6,6 @@ public class Mower {
     private int y;
     private String direction;
 
-    public Mower(int x, int y, String direction) {
-        this.x = x;
-        this.y = y;
-        this.direction = direction;
-    }
-
     public Mower(Position position) {
         this.x = position.x();
         this.y = position.y();
