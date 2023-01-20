@@ -31,4 +31,13 @@ public class MowerShould {
         Assertions.assertThat(position.y()).isEqualTo(0);
         Assertions.assertThat(position.direction()).isEqualTo("E");
     }
+
+    @Test
+    public void turn_left_to_north_from_est() {
+        Position position = Mower.execute(0, 0, "E", "G");
+
+        Assertions.assertThat(position.x()).isEqualTo(0);
+        Assertions.assertThat(position.y()).isEqualTo(0);
+        Assertions.assertThat(position.direction()).isEqualTo("N");
+    }
 }
