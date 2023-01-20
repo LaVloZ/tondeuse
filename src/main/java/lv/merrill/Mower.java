@@ -22,6 +22,9 @@ public class Mower {
         if("S".equals(direction) && "A".equals(instructions)) {
             return new Position(x, y - 1, "S");
         }
+        if("W".equals(direction) && "A".equals(instructions)) {
+            return new Position(x - 1, y, "W");
+        }
         if("N".equals(direction) && "D".equals(instructions)) {
             return new Position(x, y, "E");
         }
