@@ -4,8 +4,8 @@ public class Mower {
 
     private Position position;
 
-    public Mower(Position position) {
-        this.position = position;
+    public Mower(Position initialPosition) {
+        this.position = initialPosition;
     }
 
     public Position execute(String instruction) {
