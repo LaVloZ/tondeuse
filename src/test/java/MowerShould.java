@@ -38,16 +38,16 @@ public class MowerShould {
 
     @ParameterizedTest
     @CsvSource({
-            "0, 0, N, 0, 1",
-            "0, 0, E, 1, 0",
-            "0, 1, S, 0, 0",
-            "1, 0, W, 0, 0",
+            "0, 0, N, 0, 1, N",
+            "0, 0, E, 1, 0, E",
+            "0, 1, S, 0, 0, S",
+            "1, 0, W, 0, 0, W",
     })
-    public void forward(int initialX, int initialY, String initialDirection, int expectedX, int expectedY) {
+    public void forward(int initialX, int initialY, String initialDirection, int expectedX, int expectedY, String expectedDirection) {
         Mower mower = new Mower(initialX, initialY, initialDirection);
 
         Position position = mower.execute( "A");
 
-        Assertions.assertThat(position).isEqualTo(new Position(expectedX, expectedY, initialDirection));
+        Assertions.assertThat(position).isEqualTo(new Position(expectedX, expectedY, expectedDirection));
     }
 }
