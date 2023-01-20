@@ -24,6 +24,7 @@ public class MowerShould {
     @ParameterizedTest
     @CsvSource({
             "N, E",
+            "E, S",
     })
     public void turn_right(String initialDirection, String expectedDirection) {
         Position position = Mower.execute(0, 0, initialDirection, "D");
