@@ -14,7 +14,7 @@ public class MowerShould {
             "E, N",
     })
     public void turn_left(String initialDirection, String expectedDirection) {
-        Mower mower = new Mower(0, 0, initialDirection);
+        Mower mower = new Mower(new Position(0, 0, initialDirection));
 
         Position position = mower.execute("G");
 
@@ -29,7 +29,7 @@ public class MowerShould {
             "W, N",
     })
     public void turn_right(String initialDirection, String expectedDirection) {
-        Mower mower = new Mower(0, 0, initialDirection);
+        Mower mower = new Mower(new Position(0, 0, initialDirection));
 
         Position position = mower.execute( "D");
 
@@ -44,7 +44,7 @@ public class MowerShould {
             "1, 0, W, 0, 0, W",
     })
     public void forward(int initialX, int initialY, String initialDirection, int expectedX, int expectedY, String expectedDirection) {
-        Mower mower = new Mower(initialX, initialY, initialDirection);
+        Mower mower = new Mower(new Position(initialX, initialY, initialDirection));
 
         Position position = mower.execute( "A");
 

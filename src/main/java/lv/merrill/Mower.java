@@ -12,6 +12,12 @@ public class Mower {
         this.direction = direction;
     }
 
+    public Mower(Position position) {
+        this.x = position.x();
+        this.y = position.y();
+        this.direction = position.direction();
+    }
+
     public Position execute(String instruction) {
         if("N".equals(direction) && "A".equals(instruction)) {
             return new Position(x, y + 1, "N");
