@@ -4,7 +4,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.InstanceOfAssertFactories.BOOLEAN;
 
 public class MowerShould {
 
@@ -21,8 +20,8 @@ public class MowerShould {
         mower.execute("G");
 
         assertThat(mower)
-                .extracting(m -> m.isAt(new Position(0, 0, expectedDirection)), BOOLEAN)
-                .isTrue();
+                .extracting(Mower::position)
+                .isEqualTo(new Position(0, 0, expectedDirection));
     }
 
     @ParameterizedTest
@@ -38,8 +37,8 @@ public class MowerShould {
         mower.execute( "D");
 
         assertThat(mower)
-                .extracting(m -> m.isAt(new Position(0, 0, expectedDirection)), BOOLEAN)
-                .isTrue();
+                .extracting(Mower::position)
+                .isEqualTo(new Position(0, 0, expectedDirection));
     }
 
     @ParameterizedTest
@@ -55,7 +54,7 @@ public class MowerShould {
         mower.execute( "A");
 
         assertThat(mower)
-                .extracting(m -> m.isAt(new Position(expectedX, expectedY, expectedDirection)), BOOLEAN)
-                .isTrue();
+                .extracting(Mower::position)
+                .isEqualTo(new Position(expectedX, expectedY, expectedDirection));
     }
 }
