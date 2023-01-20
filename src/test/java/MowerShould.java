@@ -16,9 +16,7 @@ public class MowerShould {
     public void turn_left(String initialDirection, String expectedDirection) {
         Position position = Mower.execute(0, 0, initialDirection, "G");
 
-        Assertions.assertThat(position.x()).isEqualTo(0);
-        Assertions.assertThat(position.y()).isEqualTo(0);
-        Assertions.assertThat(position.direction()).isEqualTo(expectedDirection);
+        Assertions.assertThat(position).isEqualTo(new Position(0, 0, expectedDirection));
     }
 
     @ParameterizedTest
@@ -31,8 +29,6 @@ public class MowerShould {
     public void turn_right(String initialDirection, String expectedDirection) {
         Position position = Mower.execute(0, 0, initialDirection, "D");
 
-        Assertions.assertThat(position.x()).isEqualTo(0);
-        Assertions.assertThat(position.y()).isEqualTo(0);
-        Assertions.assertThat(position.direction()).isEqualTo(expectedDirection);
+        Assertions.assertThat(position).isEqualTo(new Position(0, 0, expectedDirection));
     }
 }
