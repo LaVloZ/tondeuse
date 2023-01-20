@@ -3,6 +3,9 @@ package lv.merrill;
 public class Mower {
 
     public static Position execute(int i, int y, String direction, String instructions) {
+        if ("N".equals(direction) && "D".equals(instructions)) {
+            return new Position(i, y, "E");
+        }
         if("E".equals(direction)){
             return new Position(i, y, "N");
         }
