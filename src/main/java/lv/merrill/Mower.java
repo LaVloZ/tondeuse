@@ -12,29 +12,29 @@ public class Mower {
         this.direction = direction;
     }
 
-    public Position execute(String instructions) {
-        if("N".equals(direction) && "A".equals(instructions)) {
+    public Position execute(String instruction) {
+        if("N".equals(direction) && "A".equals(instruction)) {
             return new Position(x, y + 1, "N");
         }
-        if("E".equals(direction) && "A".equals(instructions)) {
+        if("E".equals(direction) && "A".equals(instruction)) {
             return new Position(x + 1, y, "E");
         }
-        if("S".equals(direction) && "A".equals(instructions)) {
+        if("S".equals(direction) && "A".equals(instruction)) {
             return new Position(x, y - 1, "S");
         }
-        if("W".equals(direction) && "A".equals(instructions)) {
+        if("W".equals(direction) && "A".equals(instruction)) {
             return new Position(x - 1, y, "W");
         }
-        if("N".equals(direction) && "D".equals(instructions)) {
+        if("N".equals(direction) && "D".equals(instruction)) {
             return new Position(x, y, "E");
         }
-        if ("E".equals(direction) && "D".equals(instructions)) {
+        if ("E".equals(direction) && "D".equals(instruction)) {
             return new Position(x, y, "S");
         }
-        if ("S".equals(direction) && "D".equals(instructions)) {
+        if ("S".equals(direction) && "D".equals(instruction)) {
             return new Position(x, y, "W");
         }
-        if ("W".equals(direction) && "D".equals(instructions)) {
+        if ("W".equals(direction) && "D".equals(instruction)) {
             return new Position(x, y, "N");
         }
         if("E".equals(direction)){
