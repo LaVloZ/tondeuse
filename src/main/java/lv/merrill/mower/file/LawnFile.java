@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.stream.Stream;
 
 import static java.lang.Integer.parseInt;
 import static java.util.Arrays.stream;
@@ -30,9 +29,8 @@ public class LawnFile {
         for (int i = 0; i < mowers.size(); i += 2) {
             Mower mower = mower(lawn, mowers.get(i).split(" "));
 
-            Stream<Instruction> instructions = instructions(mowers.get(i + 1).split(""));
-            instructions
-                    .forEach(mower::execute);
+            List<Instruction> instructions = instructions(mowers.get(i + 1).split(""));
+            instructions.forEach(mower::execute);
 
             Position lastPosition = mower.position();
             appender.append(lastPosition).append("\n");
@@ -41,10 +39,9 @@ public class LawnFile {
         return appender.toString();
     }
 
-    private static Stream<Instruction> instructions(String[] split) {
-        String[] instructionsLine = split;
-        return stream(instructionsLine)
-                .map(Instruction::ofCode);
+    private static List<Instruction> instructions(String[] split) {
+        return stream(split)
+                .map(Instruction::ofCode).toList();
     }
 
     private Mower mower(Lawn lawn, String[] mowerLine) {
