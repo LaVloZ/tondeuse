@@ -41,7 +41,7 @@ public class Mower {
             return;
         }
         if(Direction.WEST.equals(position.direction()) && "A".equals(instruction)) {
-            Position position = new Position(new Coordinate(this.position.coordinate().x() - 1, this.position.coordinate().y()), Direction.WEST);
+            Position position = new Position(this.position.coordinate().plus(Direction.WEST.step()), Direction.WEST);
             if (position.coordinate().x() < 0){
                 return;
             }
