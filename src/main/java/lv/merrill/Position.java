@@ -29,7 +29,7 @@ public class Position {
         return coordinate;
     }
 
-    public String direction() {
+    public String directionString() {
         return direction.toString();
     }
 
