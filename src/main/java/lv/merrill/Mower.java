@@ -15,16 +15,7 @@ public class Mower {
         this.lawn = lawn;
     }
     public void execute(Instruction instruction) {
-        if("A".equals(instruction.instruction())) {
-            this.position = lawn.nextPosition(this.position);
-            return;
-        }
-
-        if ("D".equals(instruction.instruction())) {
-            position = position.turnRight();
-            return;
-        }
-        position = position.turnLeft();
+        position = instruction.execute(position, lawn);
     }
 
     public Position position() {
