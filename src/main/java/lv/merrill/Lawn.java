@@ -10,21 +10,21 @@ public class Lawn {
         this.height = height;
     }
 
-    Position nextPosition(Position position1) {
-        Position position = new Position(position1.coordinate().plus(position1.direction().step()), position1.direction());
-        if (position.coordinate().y() >= height()){
-            return null;
+    Position nextPosition(Position position) {
+        Position nextPosition = new Position(position.coordinate().plus(position.direction().step()), position.direction());
+        if (nextPosition.coordinate().y() >= height()){
+            return position;
         }
-        if (position.coordinate().x() >= width()){
-            return null;
+        if (nextPosition.coordinate().x() >= width()){
+            return position;
         }
-        if (position.coordinate().y() < 0){
-            return null;
+        if (nextPosition.coordinate().y() < 0){
+            return position;
         }
-        if (position.coordinate().x() < 0){
-            return null;
+        if (nextPosition.coordinate().x() < 0){
+            return position;
         }
-        return position;
+        return nextPosition;
     }
 
     public int width() {
