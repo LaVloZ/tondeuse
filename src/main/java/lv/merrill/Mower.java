@@ -17,7 +17,7 @@ public class Mower {
 
     public void execute(String instruction) {
         if(Direction.NORTH.equals(position.direction()) && "A".equals(instruction)) {
-            Position position = new Position(this.position.coordinate().plus(this.position.direction().step()), Direction.NORTH);
+            Position position = new Position(this.position.coordinate().plus(this.position.direction().step()), this.position.direction());
             if (position.coordinate().y() >= lawn.height()){
                 return;
             }
@@ -25,7 +25,7 @@ public class Mower {
             return;
         }
         if(Direction.EAST.equals(position.direction()) && "A".equals(instruction)) {
-            Position position = new Position(this.position.coordinate().plus(Direction.EAST.step()), Direction.EAST);
+            Position position = new Position(this.position.coordinate().plus(this.position.direction().step()), this.position.direction());
             if (position.coordinate().x() >= lawn.width()){
                 return;
             }
@@ -33,7 +33,7 @@ public class Mower {
             return;
         }
         if(Direction.SOUTH.equals(position.direction()) && "A".equals(instruction)) {
-            Position position = new Position(this.position.coordinate().plus(Direction.SOUTH.step()), Direction.SOUTH);
+            Position position = new Position(this.position.coordinate().plus(this.position.direction().step()), this.position.direction());
             if (position.coordinate().y() < 0){
                 return;
             }
@@ -41,7 +41,7 @@ public class Mower {
             return;
         }
         if(Direction.WEST.equals(position.direction()) && "A".equals(instruction)) {
-            Position position = new Position(this.position.coordinate().plus(Direction.WEST.step()), Direction.WEST);
+            Position position = new Position(this.position.coordinate().plus(this.position.direction().step()), this.position.direction());
             if (position.coordinate().x() < 0){
                 return;
             }
