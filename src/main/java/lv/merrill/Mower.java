@@ -6,8 +6,7 @@ public class Mower {
     private final Lawn lawn;
 
     public Mower(Position initialPosition) {
-        this.position = initialPosition;
-        this.lawn = new Lawn(5, 5);
+        this(initialPosition, new Lawn(5, 5));
     }
 
     public Mower(Position initialPosition, Lawn lawn) {
