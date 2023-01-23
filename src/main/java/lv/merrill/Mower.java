@@ -14,14 +14,13 @@ public class Mower {
         this.position = initialPosition;
         this.lawn = lawn;
     }
-
-    public void execute(String instruction) {
-        if("A".equals(instruction)) {
+    public void execute(Instruction instruction) {
+        if("A".equals(instruction.instruction())) {
             this.position = lawn.nextPosition(this.position);
             return;
         }
 
-        if ("D".equals(instruction)) {
+        if ("D".equals(instruction.instruction())) {
             position = position.turnRight();
             return;
         }

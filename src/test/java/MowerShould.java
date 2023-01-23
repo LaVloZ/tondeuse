@@ -1,7 +1,4 @@
-import lv.merrill.Coordinate;
-import lv.merrill.Lawn;
-import lv.merrill.Mower;
-import lv.merrill.Position;
+import lv.merrill.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -19,7 +16,7 @@ public class MowerShould {
     public void turn_left(String initialDirection, String expectedDirection) {
         Mower mower = new Mower(new Position(new Coordinate(0, 0), initialDirection));
 
-        mower.execute("G");
+        mower.execute(new Instruction("G"));
 
         assertThat(mower)
                 .extracting(Mower::position)
@@ -36,7 +33,7 @@ public class MowerShould {
     public void turn_right(String initialDirection, String expectedDirection) {
         Mower mower = new Mower(new Position(new Coordinate(0, 0), initialDirection));
 
-        mower.execute( "D");
+        mower.execute(new Instruction("D"));
 
         assertThat(mower)
                 .extracting(Mower::position)
@@ -53,7 +50,7 @@ public class MowerShould {
     public void forward(int initialX, int initialY, String initialDirection, int expectedX, int expectedY, String expectedDirection) {
         Mower mower = new Mower(new Position(new Coordinate(initialX, initialY), initialDirection));
 
-        mower.execute( "A");
+        mower.execute(new Instruction("A"));
 
         assertThat(mower)
                 .extracting(Mower::position)
@@ -70,7 +67,7 @@ public class MowerShould {
     public void ignore_forward_instruction_on_toward_edge_and_stay_at_the_same_position(int x, int y, String direction) {
         Mower mower = new Mower(new Position(new Coordinate(x, y), direction), new Lawn(5, 5));
 
-        mower.execute( "A");
+        mower.execute(new Instruction("A"));
 
         assertThat(mower)
                 .extracting(Mower::position)
