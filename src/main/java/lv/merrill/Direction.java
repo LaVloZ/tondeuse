@@ -72,7 +72,7 @@ public enum Direction {
         this.code = code;
     }
 
-    private String code;
+    private final String code;
 
     public abstract Direction left();
     public abstract Direction right();
