@@ -23,8 +23,7 @@ public class LawnFile {
     public String result() {
         StringBuilder appender = new StringBuilder();
 
-        Dimension dimension = dimension();
-        Lawn lawn = new Lawn(dimension);
+        Lawn lawn = lawn();
 
         List<String> mowers = lines.stream().skip(1).toList();
         for (int i = 0; i < mowers.size(); i += 2) {
@@ -44,9 +43,10 @@ public class LawnFile {
         return appender.toString();
     }
 
-    private Dimension dimension() {
+    private Lawn lawn() {
         int lawnX = parseInt(lines.get(0).split(" ")[0]);
         int lawnY = parseInt(lines.get(0).split(" ")[1]);
-        return new Dimension(new Coordinate(lawnX, lawnY));
+        Dimension dimension = new Dimension(new Coordinate(lawnX, lawnY));
+        return new Lawn(dimension);
     }
 }
