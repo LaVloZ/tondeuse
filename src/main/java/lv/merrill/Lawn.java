@@ -1,7 +1,7 @@
 package lv.merrill;
 
 public class Lawn {
-    private Dimension dimension;
+    private final Dimension dimension;
 
     public Lawn(Dimension dimension) {
 
