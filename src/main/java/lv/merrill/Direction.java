@@ -11,7 +11,7 @@ public enum Direction {
 
         @Override
         public Direction right() {
-            return null;
+            return Direction.EAST;
         }
     },
     EAST("E") {

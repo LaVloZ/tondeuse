@@ -49,7 +49,7 @@ public class Mower {
             return;
         }
         if(Direction.NORTH.equals(position.direction()) && "D".equals(instruction)) {
-            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.EAST);
+            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.NORTH.right());
             return;
         }
         if (Direction.EAST.equals(position.direction()) && "D".equals(instruction)) {
