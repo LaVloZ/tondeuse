@@ -9,4 +9,9 @@ public record Coordinate(int x, int y) {
     public Dimension asDimension() {
         return new Dimension(x + 1, y + 1);
     }
+
+    @Override
+    public String toString() {
+        return x + " " + y;
+    }
 }

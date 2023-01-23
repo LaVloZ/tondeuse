@@ -17,14 +17,6 @@ public class Position {
         this.direction = Direction.ofCode(direction);
     }
 
-    public Coordinate coordinate() {
-        return coordinate;
-    }
-
-    public Direction direction() {
-        return direction;
-    }
-
     public Position turnRight() {
         return new Position(coordinate, direction.right());
     }
@@ -34,7 +26,7 @@ public class Position {
     }
 
     public Position forward() {
-        return forwardBy(direction().step());
+        return forwardBy(direction.step());
     }
 
     private Position forwardBy(Coordinate step) {
@@ -60,9 +52,6 @@ public class Position {
 
     @Override
     public String toString() {
-        return "Position{" +
-                "coordinate=" + coordinate +
-                ", direction=" + direction +
-                '}';
+        return coordinate + " " + direction;
     }
 }

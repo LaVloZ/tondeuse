@@ -1,6 +1,18 @@
 package lv.merrill.mower;
 
-public record Dimension(int width, int height) {
+public class Dimension {
+
+    private final int width;
+    private final int height;
+
+    public Dimension(int width, int height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public Dimension(Coordinate coordinate) {
+        this(coordinate.asDimension().width, coordinate.asDimension().height);
+    }
 
     public boolean include(Dimension dimension) {
         return dimension.width >= 1

@@ -13,8 +13,8 @@ public class MowerShould {
 
     @ParameterizedTest
     @MethodSource("lawn_of_5_5_and_mower_at_1_2_N_with_instructions_GAGAGAGAA_should_finish_at_1_3_N")
-    public void acceptance_test(int width, int height, int initialX, int initialY, String initialDirection, String instructionsAsString, int lastX, int lastY, String lastDirection) {
-        Mower mower = new Mower(new Position(new Coordinate(initialX, initialY), initialDirection), new Lawn(new Dimension(width, height)));
+    public void acceptance_test(int lawnX, int lawnY, int initialX, int initialY, String initialDirection, String instructionsAsString, int lastX, int lastY, String lastDirection) {
+        Mower mower = new Mower(new Position(new Coordinate(initialX, initialY), initialDirection), new Lawn(new Dimension(new Coordinate(lawnX, lawnY))));
         Stream<Instruction> instruction = parse(instructionsAsString);
 
         instruction.forEach(mower::execute);
@@ -33,7 +33,8 @@ public class MowerShould {
 
     private static Stream<Arguments> lawn_of_5_5_and_mower_at_1_2_N_with_instructions_GAGAGAGAA_should_finish_at_1_3_N() {
         return Stream.of(
-                Arguments.of(5, 5, 1, 2, "N", "GAGAGAGAA", 1, 3, "N")
+                Arguments.of(5, 5, 1, 2, "N", "GAGAGAGAA", 1, 3, "N"),
+                Arguments.of(5, 5, 3, 3, "E", "AADAADADDA", 5, 1, "E")
         );
     }
 
@@ -96,7 +97,7 @@ public class MowerShould {
             "0, 0, W",
     })
     public void ignore_forward_instruction_on_toward_edge_and_stay_at_the_same_position(int x, int y, String direction) {
-        Mower mower = new Mower(new Position(new Coordinate(x, y), direction), new Lawn(new Dimension(5, 5)));
+        Mower mower = new Mower(new Position(new Coordinate(x, y), direction), new Lawn(new Dimension(new Coordinate(4, 4))));
 
         mower.execute(Instruction.ofCode("A"));
 
