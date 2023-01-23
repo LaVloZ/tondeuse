@@ -61,4 +61,8 @@ public class Position {
                 ", direction=" + direction +
                 '}';
     }
+
+    public Dimension asDimension() {
+        return coordinate.asDimension();
+    }
 }
