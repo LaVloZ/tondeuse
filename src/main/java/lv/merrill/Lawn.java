@@ -4,10 +4,10 @@ public class Lawn {
     private final int width;
     private final int height;
 
-    public Lawn(int width, int height) {
+    public Lawn(Dimension dimension) {
 
-        this.width = width;
-        this.height = height;
+        this.width = dimension.width();
+        this.height = dimension.height();
     }
 
     Position nextPosition(Position position) {
