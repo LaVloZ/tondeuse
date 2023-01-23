@@ -25,6 +25,14 @@ public class Position {
         return direction;
     }
 
+    public Position turnRight() {
+        return new Position(coordinate, direction.right());
+    }
+
+    public Position turnLeft() {
+        return new Position(coordinate, direction.left());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -44,13 +52,5 @@ public class Position {
                 "coordinate=" + coordinate +
                 ", direction=" + direction +
                 '}';
-    }
-
-    public Position turnRight() {
-        return new Position(coordinate, direction.right());
-    }
-
-    public Position turnLeft() {
-        return new Position(coordinate, direction.left());
     }
 }
