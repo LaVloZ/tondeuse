@@ -16,7 +16,7 @@ public class MowerShould {
     public void turn_left(String initialDirection, String expectedDirection) {
         Mower mower = new Mower(new Position(new Coordinate(0, 0), initialDirection));
 
-        mower.execute(new Instruction("G"));
+        mower.execute(new Instruction1("G"));
 
         assertThat(mower)
                 .extracting(Mower::position)
@@ -33,7 +33,7 @@ public class MowerShould {
     public void turn_right(String initialDirection, String expectedDirection) {
         Mower mower = new Mower(new Position(new Coordinate(0, 0), initialDirection));
 
-        mower.execute(new Instruction("D"));
+        mower.execute(new Instruction1("D"));
 
         assertThat(mower)
                 .extracting(Mower::position)
@@ -50,7 +50,7 @@ public class MowerShould {
     public void forward(int initialX, int initialY, String initialDirection, int expectedX, int expectedY, String expectedDirection) {
         Mower mower = new Mower(new Position(new Coordinate(initialX, initialY), initialDirection));
 
-        mower.execute(new Instruction("A"));
+        mower.execute(new Instruction1("A"));
 
         assertThat(mower)
                 .extracting(Mower::position)
@@ -67,7 +67,7 @@ public class MowerShould {
     public void ignore_forward_instruction_on_toward_edge_and_stay_at_the_same_position(int x, int y, String direction) {
         Mower mower = new Mower(new Position(new Coordinate(x, y), direction), new Lawn(5, 5));
 
-        mower.execute(new Instruction("A"));
+        mower.execute(new Instruction1("A"));
 
         assertThat(mower)
                 .extracting(Mower::position)
