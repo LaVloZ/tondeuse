@@ -10,10 +10,10 @@ public class Lawn {
 
     Position nextPosition(Position position) {
         Position nextPosition = position.forward();
-        if (dimension.isInside(nextPosition)){
-            return position;
+        if (dimension.include(nextPosition)) {
+            return nextPosition;
         }
-        return nextPosition;
+        return position;
     }
 
 }
