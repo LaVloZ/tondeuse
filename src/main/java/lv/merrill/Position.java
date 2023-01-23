@@ -14,7 +14,7 @@ public class Position {
         directions.put("W", Direction.WEST);
     }
     private Coordinate coordinate;
-    private String direction;
+    private Direction direction;
 
     public Position(Coordinate coordinate, Direction direction) {
         this.coordinate = coordinate;
@@ -22,7 +22,7 @@ public class Position {
 
     public Position(Coordinate coordinate, String direction) {
         this.coordinate = coordinate;
-        this.direction = direction;
+        this.direction = directions.get(direction);
     }
 
     public Coordinate coordinate() {
@@ -30,7 +30,7 @@ public class Position {
     }
 
     public String direction() {
-        return direction;
+        return direction.toString();
     }
 
     @Override

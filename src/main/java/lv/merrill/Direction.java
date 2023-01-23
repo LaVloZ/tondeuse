@@ -34,7 +34,7 @@ public enum Direction {
             return null;
         }
     },
-    WEST("S") {
+    WEST("W") {
         @Override
         public Direction left() {
             return null;
@@ -54,4 +54,9 @@ public enum Direction {
 
     public abstract Direction left();
     public abstract Direction right();
+
+    @Override
+    public String toString() {
+        return code;
+    }
 }
