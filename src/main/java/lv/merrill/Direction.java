@@ -13,6 +13,11 @@ public enum Direction {
         public Direction right() {
             return Direction.EAST;
         }
+
+        @Override
+        public Coordinate step() {
+            return new Coordinate(0, 1);
+        }
     },
     EAST("E") {
         @Override
@@ -23,6 +28,11 @@ public enum Direction {
         @Override
         public Direction right() {
             return SOUTH;
+        }
+
+        @Override
+        public Coordinate step() {
+            return null;
         }
     },
     SOUTH("S") {
@@ -35,6 +45,11 @@ public enum Direction {
         public Direction right() {
             return WEST;
         }
+
+        @Override
+        public Coordinate step() {
+            return null;
+        }
     },
     WEST("W") {
         @Override
@@ -46,6 +61,11 @@ public enum Direction {
         public Direction right() {
             return NORTH;
         }
+
+        @Override
+        public Coordinate step() {
+            return null;
+        }
     };
 
     Direction(String code) {
@@ -56,6 +76,8 @@ public enum Direction {
 
     public abstract Direction left();
     public abstract Direction right();
+
+    public abstract Coordinate step();
 
     @Override
     public String toString() {
