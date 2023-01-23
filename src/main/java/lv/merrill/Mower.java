@@ -25,7 +25,11 @@ public class Mower {
             return;
         }
         if("E".equals(position.direction()) && "A".equals(instruction)) {
-            position = new Position(position.x() + 1, position.y(), "E");
+            Position position = new Position(this.position.x() + 1, this.position.y(), "E");
+            if (position.x() >= lawn.width()){
+                return;
+            }
+            this.position = position;
             return;
         }
         if("S".equals(position.direction()) && "A".equals(instruction)) {
