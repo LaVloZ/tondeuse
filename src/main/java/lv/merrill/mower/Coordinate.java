@@ -1,4 +1,4 @@
-package lv.merrill;
+package lv.merrill.mower;
 
 public record Coordinate(int x, int y) {
 

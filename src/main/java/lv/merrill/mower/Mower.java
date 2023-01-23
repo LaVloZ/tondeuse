@@ -1,4 +1,4 @@
-package lv.merrill;
+package lv.merrill.mower;
 
 public class Mower {
 
