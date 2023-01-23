@@ -27,9 +27,7 @@ public class LawnFile {
 
         List<String> mowers = lines.stream().skip(1).toList();
         for (int i = 0; i < mowers.size(); i += 2) {
-            String[] positionLine = mowers.get(i).split(" ");
-            Position intialPosition = position(positionLine);
-            Mower mower = new Mower(intialPosition, lawn);
+            Mower mower = mower(lawn, mowers.get(i).split(" "));
 
             String[] instructionsLine = mowers.get(i + 1).split("");
             stream(instructionsLine)
@@ -41,6 +39,11 @@ public class LawnFile {
         }
 
         return appender.toString();
+    }
+
+    private Mower mower(Lawn lawn, String[] mowerLine) {
+        Position intialPosition = position(mowerLine);
+        return new Mower(intialPosition, lawn);
     }
 
     private Position position(String[] positionLine) {
