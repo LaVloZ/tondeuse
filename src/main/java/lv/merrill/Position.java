@@ -18,6 +18,7 @@ public class Position {
 
     public Position(Coordinate coordinate, Direction direction) {
         this.coordinate = coordinate;
+        this.direction = direction;
     }
 
     public Position(Coordinate coordinate, String direction) {
