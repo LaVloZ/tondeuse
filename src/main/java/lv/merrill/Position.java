@@ -33,6 +33,14 @@ public class Position {
         return new Position(coordinate, direction.left());
     }
 
+    public Position forward() {
+        return forwardBy(direction().step());
+    }
+
+    private Position forwardBy(Coordinate step) {
+        return new Position(coordinate.plus(step), direction);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -52,9 +60,5 @@ public class Position {
                 "coordinate=" + coordinate +
                 ", direction=" + direction +
                 '}';
-    }
-
-    public Position forward() {
-        return new Position(coordinate().plus(direction().step()), direction());
     }
 }
