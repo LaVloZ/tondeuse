@@ -62,7 +62,7 @@ public class Position {
                 '}';
     }
 
-    public Dimension asDimension() {
+    public Dimension dimension() {
         return coordinate.asDimension();
     }
 }
