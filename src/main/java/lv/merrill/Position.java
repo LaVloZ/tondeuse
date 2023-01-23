@@ -41,6 +41,10 @@ public class Position {
         return new Position(coordinate.plus(step), direction);
     }
 
+    public Dimension dimension() {
+        return coordinate.asDimension();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,9 +64,5 @@ public class Position {
                 "coordinate=" + coordinate +
                 ", direction=" + direction +
                 '}';
-    }
-
-    public Dimension dimension() {
-        return coordinate.asDimension();
     }
 }
