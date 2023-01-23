@@ -57,7 +57,7 @@ public class Mower {
             return;
         }
         if(Direction.SOUTH.equals(position.direction())){
-            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.EAST);
+            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.SOUTH.left());
             return;
         }
         if(Direction.WEST.equals(position.direction())){
