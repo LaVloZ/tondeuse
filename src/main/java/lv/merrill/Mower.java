@@ -14,7 +14,7 @@ public class Mower {
         this.position = initialPosition;
         this.lawn = lawn;
     }
-    public void execute(Instruction1 instruction) {
+    public void execute(Instruction instruction) {
         position = instruction.execute(position, lawn);
     }
 
