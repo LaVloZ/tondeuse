@@ -53,7 +53,7 @@ public class Mower {
             return;
         }
         if(Direction.EAST.equals(position.direction())){
-            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.NORTH);
+            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.EAST.left());
             return;
         }
         if(Direction.SOUTH.equals(position.direction())){
