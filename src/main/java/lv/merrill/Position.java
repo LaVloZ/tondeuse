@@ -1,18 +1,9 @@
 package lv.merrill;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class Position {
 
-    private static Map<String, Direction> directions = new HashMap<>();
-    static {
-        directions.put("N", Direction.NORTH);
-        directions.put("E", Direction.EAST);
-        directions.put("S", Direction.SOUTH);
-        directions.put("W", Direction.WEST);
-    }
     private Coordinate coordinate;
     private Direction direction;
 
@@ -23,7 +14,7 @@ public class Position {
 
     public Position(Coordinate coordinate, String direction) {
         this.coordinate = coordinate;
-        this.direction = directions.get(direction);
+        this.direction = Direction.ofCode(direction);
     }
 
     public Coordinate coordinate() {

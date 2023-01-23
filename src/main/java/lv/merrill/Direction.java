@@ -1,5 +1,7 @@
 package lv.merrill;
 
+import java.util.Arrays;
+
 public enum Direction {
     NORTH("N") {
         @Override
@@ -58,5 +60,9 @@ public enum Direction {
     @Override
     public String toString() {
         return code;
+    }
+
+    public static Direction ofCode(String code) {
+        return Arrays.stream(Direction.values()).filter(direction -> direction.code.equals(code)).findFirst().orElseThrow(IllegalArgumentException::new);
     }
 }
