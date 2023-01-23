@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Position {
 
-    private Coordinate coordinate;
-    private Direction direction;
+    private final Coordinate coordinate;
+    private final Direction direction;
 
     public Position(Coordinate coordinate, Direction direction) {
         this.coordinate = coordinate;
