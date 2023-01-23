@@ -61,10 +61,10 @@ public class Mower {
             return;
         }
         if(Direction.WEST.equals(position.direction())){
-            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.SOUTH);
+            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.WEST.left());
             return;
         }
-        position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.WEST);
+        position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.NORTH.left());
     }
 
     public Position position() {
