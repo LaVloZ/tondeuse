@@ -52,7 +52,7 @@ public class Mower {
             position = position.turnRight();
             return;
         }
-        position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), position.direction().left());
+        position = position.turnLeft();
     }
 
     public Position position() {

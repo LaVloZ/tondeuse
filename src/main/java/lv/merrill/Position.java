@@ -49,4 +49,8 @@ public class Position {
     public Position turnRight() {
         return new Position(coordinate, direction.right());
     }
+
+    public Position turnLeft() {
+        return new Position(coordinate, direction.left());
+    }
 }
