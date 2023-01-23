@@ -48,6 +48,7 @@ public class Mower {
             this.position = position;
             return;
         }
+
         if ("D".equals(instruction)) {
             position = position.turnRight();
             return;
