@@ -40,8 +40,8 @@ public class Mower {
             this.position = position;
             return;
         }
-        if("W".equals(position.directionString()) && "A".equals(instruction)) {
-            Position position = new Position(new Coordinate(this.position.coordinate().x() - 1, this.position.coordinate().y()), "W");
+        if(Direction.WEST.equals(position.direction()) && "A".equals(instruction)) {
+            Position position = new Position(new Coordinate(this.position.coordinate().x() - 1, this.position.coordinate().y()), Direction.WEST);
             if (position.coordinate().x() < 0){
                 return;
             }
@@ -57,10 +57,10 @@ public class Mower {
             return;
         }
         if (Direction.SOUTH.equals(position.direction()) && "D".equals(instruction)) {
-            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), "W");
+            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.WEST);
             return;
         }
-        if ("W".equals(position.directionString()) && "D".equals(instruction)) {
+        if (Direction.WEST.equals(position.direction()) && "D".equals(instruction)) {
             position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), "N");
             return;
         }
@@ -72,11 +72,11 @@ public class Mower {
             position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.EAST);
             return;
         }
-        if("W".equals(position.directionString())){
+        if(Direction.WEST.equals(position.direction())){
             position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.SOUTH);
             return;
         }
-        position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), "W");
+        position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.WEST);
     }
 
     public Position position() {
