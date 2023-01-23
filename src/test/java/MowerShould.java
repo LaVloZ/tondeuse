@@ -1,3 +1,4 @@
+import lv.merrill.Lawn;
 import lv.merrill.Mower;
 import lv.merrill.Position;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -56,5 +57,19 @@ public class MowerShould {
         assertThat(mower)
                 .extracting(Mower::position)
                 .isEqualTo(new Position(expectedX, expectedY, expectedDirection));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "0, 4, N",
+    })
+    public void ignore_forward_instruction_on_toward_edge_and_stay_at_the_same_position(int x, int y, String direction) {
+        Mower mower = new Mower(new Position(x, y, direction), new Lawn(5, 5));
+
+        mower.execute( "A");
+
+        assertThat(mower)
+                .extracting(Mower::position)
+                .isEqualTo(new Position(x, y, direction));
     }
 }

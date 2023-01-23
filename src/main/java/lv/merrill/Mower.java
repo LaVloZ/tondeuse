@@ -3,14 +3,25 @@ package lv.merrill;
 public class Mower {
 
     private Position position;
+    private final Lawn lawn;
 
     public Mower(Position initialPosition) {
         this.position = initialPosition;
+        this.lawn = new Lawn(5, 5);
+    }
+
+    public Mower(Position initialPosition, Lawn lawn) {
+        this.position = initialPosition;
+        this.lawn = lawn;
     }
 
     public void execute(String instruction) {
         if("N".equals(position.direction()) && "A".equals(instruction)) {
-            position = new Position(position.x(), position.y() + 1, "N");
+            Position position = new Position(this.position.x(), this.position.y() + 1, "N");
+            if (position.y() >= lawn.height()){
+                return;
+            }
+            this.position = position;
             return;
         }
         if("E".equals(position.direction()) && "A".equals(instruction)) {
