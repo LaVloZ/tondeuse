@@ -85,6 +85,9 @@ public enum Direction {
     }
 
     public static Direction ofCode(String code) {
-        return Arrays.stream(Direction.values()).filter(direction -> direction.code.equals(code)).findFirst().orElseThrow(IllegalArgumentException::new);
+        return Arrays.stream(Direction.values())
+                .filter(direction -> direction.code.equals(code))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
     }
 }
