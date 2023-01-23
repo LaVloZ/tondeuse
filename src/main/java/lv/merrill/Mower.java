@@ -16,7 +16,7 @@ public class Mower {
     }
 
     public void execute(String instruction) {
-        if("N".equals(position.directionString()) && "A".equals(instruction)) {
+        if(Direction.NORTH.equals(position.direction()) && "A".equals(instruction)) {
             Position position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y() + 1), "N");
             if (position.coordinate().y() >= lawn.height()){
                 return;

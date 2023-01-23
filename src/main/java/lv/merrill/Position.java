@@ -33,6 +33,10 @@ public class Position {
         return direction.toString();
     }
 
+    public Direction direction() {
+        return direction;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
