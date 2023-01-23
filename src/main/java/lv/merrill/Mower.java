@@ -17,7 +17,9 @@ public class Mower {
 
     public void execute(String instruction) {
         if("A".equals(instruction)) {
-            nextPosition(this);
+            Position position = nextPosition(this.position, lawn);
+            if (position == null) return;
+            this.position = position;
             return;
         }
 
@@ -28,21 +30,21 @@ public class Mower {
         position = position.turnLeft();
     }
 
-    private static void nextPosition(Mower mower) {
-        Position position = new Position(mower.position.coordinate().plus(mower.position.direction().step()), mower.position.direction());
-        if (position.coordinate().y() >= mower.lawn.height()){
-            return;
+    private static Position nextPosition(Position position1, Lawn lawn) {
+        Position position = new Position(position1.coordinate().plus(position1.direction().step()), position1.direction());
+        if (position.coordinate().y() >= lawn.height()){
+            return null;
         }
-        if (position.coordinate().x() >= mower.lawn.width()){
-            return;
+        if (position.coordinate().x() >= lawn.width()){
+            return null;
         }
         if (position.coordinate().y() < 0){
-            return;
+            return null;
         }
         if (position.coordinate().x() < 0){
-            return;
+            return null;
         }
-        mower.position = position;
+        return position;
     }
 
     public Position position() {
