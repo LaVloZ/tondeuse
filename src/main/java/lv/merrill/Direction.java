@@ -32,7 +32,7 @@ public enum Direction {
 
         @Override
         public Coordinate step() {
-            return null;
+            return new Coordinate(1, 0);
         }
     },
     SOUTH("S") {
