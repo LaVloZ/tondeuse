@@ -47,6 +47,6 @@ public class Position {
     }
 
     public Position turnRight() {
-        return new Position(coordinate, direction.left());
+        return new Position(coordinate, direction.right());
     }
 }
