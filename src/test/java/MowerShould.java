@@ -63,6 +63,7 @@ public class MowerShould {
     @CsvSource({
             "0, 4, N",
             "4, 0, E",
+            "0, 0, S",
     })
     public void ignore_forward_instruction_on_toward_edge_and_stay_at_the_same_position(int x, int y, String direction) {
         Mower mower = new Mower(new Position(x, y, direction), new Lawn(5, 5));
