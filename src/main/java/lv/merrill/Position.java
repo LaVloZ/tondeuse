@@ -21,10 +21,6 @@ public class Position {
         return coordinate;
     }
 
-    public String directionString() {
-        return direction.toString();
-    }
-
     public Direction direction() {
         return direction;
     }
