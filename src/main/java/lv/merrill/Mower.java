@@ -77,7 +77,6 @@ public class Mower {
             return;
         }
         position = new Position(this.position.x(), this.position.y(), "W");
-        return;
     }
 
     public Position position() {
