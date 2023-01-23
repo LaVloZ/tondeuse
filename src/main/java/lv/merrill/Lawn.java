@@ -1,21 +1,19 @@
 package lv.merrill;
 
 public class Lawn {
-    private final int width;
-    private final int height;
+    private Dimension dimension;
 
     public Lawn(Dimension dimension) {
 
-        this.width = dimension.width();
-        this.height = dimension.height();
+        this.dimension = dimension;
     }
 
     Position nextPosition(Position position) {
         Position nextPosition = position.forward();
-        if (nextPosition.coordinate().y() >= height()){
+        if (nextPosition.coordinate().y() >= dimension.height()){
             return position;
         }
-        if (nextPosition.coordinate().x() >= width()){
+        if (nextPosition.coordinate().x() >= dimension.width()){
             return position;
         }
         if (nextPosition.coordinate().y() < 0){
@@ -25,13 +23,5 @@ public class Lawn {
             return position;
         }
         return nextPosition;
-    }
-
-    public int width() {
-        return width;
-    }
-
-    public int height() {
-        return height;
     }
 }
