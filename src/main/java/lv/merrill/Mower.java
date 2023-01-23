@@ -17,66 +17,66 @@ public class Mower {
 
     public void execute(String instruction) {
         if("N".equals(position.direction()) && "A".equals(instruction)) {
-            Position position = new Position(this.position.x(), this.position.y() + 1, "N");
-            if (position.y() >= lawn.height()){
+            Position position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y() + 1), "N");
+            if (position.coordinate().y() >= lawn.height()){
                 return;
             }
             this.position = position;
             return;
         }
         if("E".equals(position.direction()) && "A".equals(instruction)) {
-            Position position = new Position(this.position.x() + 1, this.position.y(), "E");
-            if (position.x() >= lawn.width()){
+            Position position = new Position(new Coordinate(this.position.coordinate().x() + 1, this.position.coordinate().y()), "E");
+            if (position.coordinate().x() >= lawn.width()){
                 return;
             }
             this.position = position;
             return;
         }
         if("S".equals(position.direction()) && "A".equals(instruction)) {
-            Position position = new Position(this.position.x(), this.position.y() - 1, "S");
-            if (position.y() < 0){
+            Position position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y() - 1), "S");
+            if (position.coordinate().y() < 0){
                 return;
             }
             this.position = position;
             return;
         }
         if("W".equals(position.direction()) && "A".equals(instruction)) {
-            Position position = new Position(this.position.x() - 1, this.position.y(), "W");
-            if (position.x() < 0){
+            Position position = new Position(new Coordinate(this.position.coordinate().x() - 1, this.position.coordinate().y()), "W");
+            if (position.coordinate().x() < 0){
                 return;
             }
             this.position = position;
             return;
         }
         if("N".equals(position.direction()) && "D".equals(instruction)) {
-            position = new Position(this.position.x(), this.position.y(), "E");
+            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), "E");
             return;
         }
         if ("E".equals(position.direction()) && "D".equals(instruction)) {
-            position = new Position(position.x(), position.y(), "S");
+            position = new Position(new Coordinate(position.coordinate().x(), position.coordinate().y()), "S");
             return;
         }
         if ("S".equals(position.direction()) && "D".equals(instruction)) {
-            position = new Position(this.position.x(), this.position.y(), "W");
+            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), "W");
             return;
         }
         if ("W".equals(position.direction()) && "D".equals(instruction)) {
-            position = new Position(this.position.x(), this.position.y(), "N");
+            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), "N");
             return;
         }
         if("E".equals(position.direction())){
-            position = new Position(this.position.x(), this.position.y(), "N");
+            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), "N");
             return;
         }
         if("S".equals(position.direction())){
-            position = new Position(this.position.x(), this.position.y(), "E");
+            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), "E");
             return;
         }
         if("W".equals(position.direction())){
-            position = new Position(this.position.x(), this.position.y(), "S");
+            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), "S");
             return;
         }
-        position = new Position(this.position.x(), this.position.y(), "W");
+        position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), "W");
     }
 
     public Position position() {

@@ -1,4 +1,4 @@
 package lv.merrill;
 
-public record Position(int x, int y, String direction) {
+public record Position(Coordinate coordinate, String direction) {
 }
