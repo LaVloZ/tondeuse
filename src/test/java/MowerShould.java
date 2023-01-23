@@ -1,10 +1,40 @@
 import lv.merrill.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MowerShould {
+
+    @ParameterizedTest
+    @MethodSource("lawn_of_5_5_and_mower_at_1_2_N_with_instructions_GAGAGAGAA_should_finish_at_1_3_N")
+    public void acceptance_test(int width, int height, int initialX, int initialY, String initialDirection, String instructionsAsString, int lastX, int lastY, String lastDirection) {
+        Mower mower = new Mower(new Position(new Coordinate(initialX, initialY), initialDirection), new Lawn(new Dimension(width, height)));
+        Stream<Instruction> instruction = parse(instructionsAsString);
+
+        instruction.forEach(mower::execute);
+
+        assertThat(mower)
+                .extracting(Mower::position)
+                .isEqualTo(new Position(new Coordinate(lastX, lastY), lastDirection));
+    }
+
+    private static Stream<Instruction> parse(String instructionsAsString) {
+        return instructionsAsString.chars()
+                .mapToObj(value -> (char) value)
+                .map(String::valueOf)
+                .map(Instruction::ofCode);
+    }
+
+    private static Stream<Arguments> lawn_of_5_5_and_mower_at_1_2_N_with_instructions_GAGAGAGAA_should_finish_at_1_3_N() {
+        return Stream.of(
+                Arguments.of(5, 5, 1, 2, "N", "GAGAGAGAA", 1, 3, "N")
+        );
+    }
 
     @ParameterizedTest
     @CsvSource({
