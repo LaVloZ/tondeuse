@@ -14,7 +14,7 @@ public class MowerShould {
             "E, N",
     })
     public void turn_left(String initialDirection, String expectedDirection) {
-        Mower mower = new Mower(new Position(new Coordinate(0, 0), initialDirection));
+        Mower mower = new Mower(new Position(new Coordinate(0, 0), initialDirection), new Lawn(5, 5));
 
         mower.execute(Instruction.ofCode("G"));
 
@@ -31,7 +31,7 @@ public class MowerShould {
             "W, N",
     })
     public void turn_right(String initialDirection, String expectedDirection) {
-        Mower mower = new Mower(new Position(new Coordinate(0, 0), initialDirection));
+        Mower mower = new Mower(new Position(new Coordinate(0, 0), initialDirection), new Lawn(5, 5));
 
         mower.execute(Instruction.ofCode("D"));
 
@@ -48,7 +48,7 @@ public class MowerShould {
             "1, 0, W, 0, 0, W",
     })
     public void forward(int initialX, int initialY, String initialDirection, int expectedX, int expectedY, String expectedDirection) {
-        Mower mower = new Mower(new Position(new Coordinate(initialX, initialY), initialDirection));
+        Mower mower = new Mower(new Position(new Coordinate(initialX, initialY), initialDirection), new Lawn(5, 5));
 
         mower.execute(Instruction.ofCode("A"));
 
