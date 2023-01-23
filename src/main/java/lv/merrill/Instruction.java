@@ -21,7 +21,7 @@ public enum Instruction {
         }
     };
 
-    private String code;
+    private final String code;
 
     Instruction(String code) {
         this.code = code;
