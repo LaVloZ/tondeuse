@@ -41,7 +41,11 @@ public class Mower {
             return;
         }
         if("W".equals(position.direction()) && "A".equals(instruction)) {
-            position = new Position(this.position.x() - 1, this.position.y(), "W");
+            Position position = new Position(this.position.x() - 1, this.position.y(), "W");
+            if (position.x() < 0){
+                return;
+            }
+            this.position = position;
             return;
         }
         if("N".equals(position.direction()) && "D".equals(instruction)) {
