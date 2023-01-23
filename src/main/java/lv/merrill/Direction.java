@@ -22,7 +22,7 @@ public enum Direction {
 
         @Override
         public Direction right() {
-            return null;
+            return SOUTH;
         }
     },
     SOUTH("S") {
@@ -33,7 +33,7 @@ public enum Direction {
 
         @Override
         public Direction right() {
-            return null;
+            return WEST;
         }
     },
     WEST("W") {
@@ -44,7 +44,7 @@ public enum Direction {
 
         @Override
         public Direction right() {
-            return null;
+            return NORTH;
         }
     };
 

@@ -53,15 +53,15 @@ public class Mower {
             return;
         }
         if (Direction.EAST.equals(position.direction()) && "D".equals(instruction)) {
-            position = new Position(new Coordinate(position.coordinate().x(), position.coordinate().y()), Direction.SOUTH);
+            position = new Position(new Coordinate(position.coordinate().x(), position.coordinate().y()), Direction.EAST.right());
             return;
         }
         if (Direction.SOUTH.equals(position.direction()) && "D".equals(instruction)) {
-            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.WEST);
+            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.SOUTH.right());
             return;
         }
         if (Direction.WEST.equals(position.direction()) && "D".equals(instruction)) {
-            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.NORTH);
+            position = new Position(new Coordinate(this.position.coordinate().x(), this.position.coordinate().y()), Direction.WEST.right());
             return;
         }
         if(Direction.EAST.equals(position.direction())){
