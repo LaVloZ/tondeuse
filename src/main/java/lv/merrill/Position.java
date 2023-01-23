@@ -53,4 +53,8 @@ public class Position {
                 ", direction=" + direction +
                 '}';
     }
+
+    public Position forward() {
+        return new Position(coordinate().plus(direction().step()), direction());
+    }
 }

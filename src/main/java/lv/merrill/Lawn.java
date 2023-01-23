@@ -11,7 +11,7 @@ public class Lawn {
     }
 
     Position nextPosition(Position position) {
-        Position nextPosition = new Position(position.coordinate().plus(position.direction().step()), position.direction());
+        Position nextPosition = position.forward();
         if (nextPosition.coordinate().y() >= height()){
             return position;
         }
