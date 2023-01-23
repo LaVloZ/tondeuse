@@ -16,32 +16,17 @@ public class Mower {
     }
 
     public void execute(String instruction) {
-        if(Direction.NORTH.equals(position.direction()) && "A".equals(instruction)) {
+        if("A".equals(instruction)) {
             Position position = new Position(this.position.coordinate().plus(this.position.direction().step()), this.position.direction());
             if (position.coordinate().y() >= lawn.height()){
                 return;
             }
-            this.position = position;
-            return;
-        }
-        if(Direction.EAST.equals(position.direction()) && "A".equals(instruction)) {
-            Position position = new Position(this.position.coordinate().plus(this.position.direction().step()), this.position.direction());
             if (position.coordinate().x() >= lawn.width()){
                 return;
             }
-            this.position = position;
-            return;
-        }
-        if(Direction.SOUTH.equals(position.direction()) && "A".equals(instruction)) {
-            Position position = new Position(this.position.coordinate().plus(this.position.direction().step()), this.position.direction());
             if (position.coordinate().y() < 0){
                 return;
             }
-            this.position = position;
-            return;
-        }
-        if(Direction.WEST.equals(position.direction()) && "A".equals(instruction)) {
-            Position position = new Position(this.position.coordinate().plus(this.position.direction().step()), this.position.direction());
             if (position.coordinate().x() < 0){
                 return;
             }
