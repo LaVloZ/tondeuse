@@ -1,8 +1,8 @@
 package lv.merrill;
 
 public class Lawn {
-    private int width;
-    private int height;
+    private final int width;
+    private final int height;
 
     public Lawn(int width, int height) {
 
