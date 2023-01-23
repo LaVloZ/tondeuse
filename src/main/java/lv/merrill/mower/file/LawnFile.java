@@ -28,7 +28,7 @@ public class LawnFile {
         List<String> mowers = lines.stream().skip(1).toList();
         for (int i = 0; i < mowers.size(); i += 2) {
             String[] positionLine = mowers.get(i).split(" ");
-            Position intialPosition = new Position(new Coordinate(parseInt(positionLine[0]), parseInt(positionLine[1])), Direction.ofCode(positionLine[2]));
+            Position intialPosition = position(positionLine);
             Mower mower = new Mower(intialPosition, lawn);
 
             String[] instructionsLine = mowers.get(i + 1).split("");
@@ -41,6 +41,14 @@ public class LawnFile {
         }
 
         return appender.toString();
+    }
+
+    private Position position(String[] positionLine) {
+        int initialX = parseInt(positionLine[0]);
+        int initialY = parseInt(positionLine[1]);
+        Direction initialDirection = Direction.ofCode(positionLine[2]);
+        Position intialPosition = new Position(new Coordinate(initialX, initialY), initialDirection);
+        return intialPosition;
     }
 
     private Lawn lawn() {
