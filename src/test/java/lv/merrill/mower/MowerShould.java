@@ -12,7 +12,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MowerShould {
 
     @ParameterizedTest
-    @MethodSource("lawn_of_5_5_and_mower_at_1_2_N_with_instructions_GAGAGAGAA_should_finish_at_1_3_N")
+    @MethodSource({
+            "lawn_of_5_5_and_mower_at_1_2_N_with_instructions_GAGAGAGAA_should_finish_at_1_3_N",
+            "lawn_of_5_5_and_mower_at_3_3_E_with_instructions_AADAADADDA_should_finish_at_5_1_E",
+    })
     public void acceptance_test(int lawnX, int lawnY, int initialX, int initialY, String initialDirection, String instructionsAsString, int lastX, int lastY, String lastDirection) {
         Mower mower = new Mower(new Position(new Coordinate(initialX, initialY), initialDirection), new Lawn(new Dimension(new Coordinate(lawnX, lawnY))));
         Stream<Instruction> instruction = parse(instructionsAsString);
@@ -33,7 +36,11 @@ public class MowerShould {
 
     private static Stream<Arguments> lawn_of_5_5_and_mower_at_1_2_N_with_instructions_GAGAGAGAA_should_finish_at_1_3_N() {
         return Stream.of(
-                Arguments.of(5, 5, 1, 2, "N", "GAGAGAGAA", 1, 3, "N"),
+                Arguments.of(5, 5, 1, 2, "N", "GAGAGAGAA", 1, 3, "N")
+        );
+    }
+    private static Stream<Arguments> lawn_of_5_5_and_mower_at_3_3_E_with_instructions_AADAADADDA_should_finish_at_5_1_E() {
+        return Stream.of(
                 Arguments.of(5, 5, 3, 3, "E", "AADAADADDA", 5, 1, "E")
         );
     }
