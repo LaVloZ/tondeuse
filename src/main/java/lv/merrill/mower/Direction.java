@@ -43,11 +43,6 @@ public enum Direction {
         }
 
         @Override
-        public Direction right() {
-            return NORTH;
-        }
-
-        @Override
         public Coordinate step() {
             return new Coordinate(-1, 0);
         }
@@ -61,7 +56,7 @@ public enum Direction {
 
     public abstract Direction left();
     public Direction right() {
-        return values()[this.ordinal() + 1];
+        return values()[(this.ordinal() + 1) % values().length];
     }
 
     public abstract Coordinate step();
