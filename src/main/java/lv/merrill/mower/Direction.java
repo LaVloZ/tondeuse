@@ -10,11 +10,6 @@ public enum Direction {
         }
 
         @Override
-        public Direction right() {
-            return Direction.EAST;
-        }
-
-        @Override
         public Coordinate step() {
             return new Coordinate(0, 1);
         }
@@ -26,11 +21,6 @@ public enum Direction {
         }
 
         @Override
-        public Direction right() {
-            return SOUTH;
-        }
-
-        @Override
         public Coordinate step() {
             return new Coordinate(1, 0);
         }
@@ -39,11 +29,6 @@ public enum Direction {
         @Override
         public Direction left() {
             return EAST;
-        }
-
-        @Override
-        public Direction right() {
-            return WEST;
         }
 
         @Override
@@ -75,7 +60,9 @@ public enum Direction {
     private final String code;
 
     public abstract Direction left();
-    public abstract Direction right();
+    public Direction right() {
+        return values()[this.ordinal() + 1];
+    }
 
     public abstract Coordinate step();
 
@@ -85,7 +72,7 @@ public enum Direction {
     }
 
     public static Direction ofCode(String code) {
-        return Arrays.stream(Direction.values())
+        return Arrays.stream(values())
                 .filter(direction -> direction.code.equals(code))
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
