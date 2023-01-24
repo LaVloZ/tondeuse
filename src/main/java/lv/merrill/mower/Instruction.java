@@ -1,5 +1,7 @@
 package lv.merrill.mower;
 
+import java.util.Arrays;
+
 public enum Instruction {
 
     FORWARD("A"){
@@ -30,13 +32,6 @@ public enum Instruction {
     public abstract Position execute(Position position, Lawn lawn);
 
     public static Instruction ofCode(String code){
-        if("A".equals(code)) {
-            return FORWARD;
-        }
-
-        if ("D".equals(code)) {
-            return RIGHT;
-        }
-        return LEFT;
+        return Arrays.stream(values()).filter(instruction -> instruction.code.equals(code)).findFirst().orElse(null);
     }
 }
