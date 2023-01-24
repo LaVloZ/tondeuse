@@ -21,6 +21,12 @@ public enum Instruction {
         public Position execute(Position position, Lawn lawn) {
             return position.turnRight();
         }
+    },
+    DO_NOTHING("") {
+        @Override
+        public Position execute(Position position, Lawn lawn) {
+            return position;
+        }
     };
 
     private final String code;
@@ -32,6 +38,6 @@ public enum Instruction {
     public abstract Position execute(Position position, Lawn lawn);
 
     public static Instruction ofCode(String code){
-        return Arrays.stream(values()).filter(instruction -> instruction.code.equals(code)).findFirst().orElse(null);
+        return Arrays.stream(values()).filter(instruction -> instruction.code.equals(code)).findFirst().orElse(DO_NOTHING);
     }
 }

@@ -1,5 +1,6 @@
 package lv.merrill.mower;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -7,6 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
+import static lv.merrill.mower.Direction.NORTH;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MowerShould {
@@ -111,5 +113,16 @@ public class MowerShould {
         assertThat(mower)
                 .extracting(Mower::position)
                 .isEqualTo(new Position(new Coordinate(x, y), direction));
+    }
+
+    @Test
+    public void ignore_unknown_instruction_and_stay_at_the_actual_position() {
+        Mower mower = new Mower(new Position(new Coordinate(0, 0), NORTH), new Lawn(new Dimension(new Coordinate(4, 4))));
+
+        mower.execute(Instruction.ofCode("X"));
+
+        assertThat(mower)
+                .extracting(Mower::position)
+                .isEqualTo(new Position(new Coordinate(0, 0), NORTH));
     }
 }
