@@ -20,20 +20,13 @@ public class MowerShould {
     })
     public void acceptance_test(int lawnX, int lawnY, int initialX, int initialY, String initialDirection, String instructionsAsString, int lastX, int lastY, String lastDirection) {
         Mower mower = new Mower(new Position(new Coordinate(initialX, initialY), initialDirection), new Lawn(new Coordinate(lawnX, lawnY).asDimension()));
-        Stream<Instruction> instruction = parse(instructionsAsString);
+        Stream<Instruction> instruction = Instructions.ofCodes(instructionsAsString);
 
         instruction.forEach(mower::execute);
 
         assertThat(mower)
                 .extracting(Mower::position)
                 .isEqualTo(new Position(new Coordinate(lastX, lastY), lastDirection));
-    }
-
-    private static Stream<Instruction> parse(String instructionsAsString) {
-        return instructionsAsString.chars()
-                .mapToObj(value -> (char) value)
-                .map(String::valueOf)
-                .map(Instruction::ofCode);
     }
 
     private static Stream<Arguments> finish_at_1_3_N_by_starting_at_1_2_N_executing_GAGAGAGAA_on_5_5_lawn() {
