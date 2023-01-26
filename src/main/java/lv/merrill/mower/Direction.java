@@ -39,7 +39,7 @@ public enum Direction {
         return values()[(values().length + this.ordinal() - 1) % values().length];
     }
     public Direction right() {
-        return values()[(this.ordinal() + 1) % values().length];
+        return values()[(values().length + this.ordinal() + 1) % values().length];
     }
 
     public abstract Coordinate step();
