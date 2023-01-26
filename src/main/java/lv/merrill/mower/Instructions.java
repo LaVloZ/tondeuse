@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Instructions implements Instruction {
 
-    private List<Instruction> instructions;
+    private final List<Instruction> instructions;
 
     public Instructions(List<Instruction> instructions) {
         this.instructions = instructions;
