@@ -10,19 +10,19 @@ public class Instructions implements Instruction {
         this.instructions = instructions;
     }
 
-    public static Instruction ofCodes(String instructionsAsString) {
-        return new Instructions(instructionsAsString.chars()
-                .mapToObj(value -> (char) value)
-                .map(String::valueOf)
-                .map(Instruction::ofCode)
-                .toList());
-    }
-
     @Override
     public Position execute(Position position, Lawn lawn) {
         for (Instruction i : instructions) {
             position = i.execute(position, lawn);
         }
         return position;
+    }
+
+    public static Instruction ofCodes(String instructionsAsString) {
+        return new Instructions(instructionsAsString.chars()
+                .mapToObj(value -> (char) value)
+                .map(String::valueOf)
+                .map(Instruction::ofCode)
+                .toList());
     }
 }
