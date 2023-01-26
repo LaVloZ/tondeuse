@@ -5,11 +5,6 @@ import java.util.Arrays;
 public enum Direction {
     NORTH("N") {
         @Override
-        public Direction left() {
-            return WEST;
-        }
-
-        @Override
         public Coordinate step() {
             return new Coordinate(0, 1);
         }
@@ -41,7 +36,7 @@ public enum Direction {
     private final String code;
 
     public Direction left() {
-        return values()[(this.ordinal() - 1) % values().length];
+        return values()[(values().length + this.ordinal() - 1) % values().length];
     }
     public Direction right() {
         return values()[(this.ordinal() + 1) % values().length];
