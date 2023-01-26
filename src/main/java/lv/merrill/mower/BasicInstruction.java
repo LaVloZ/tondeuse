@@ -1,8 +1,6 @@
 package lv.merrill.mower;
 
-import java.util.Arrays;
-
-public enum BasicInstruction implements Instruction {
+enum BasicInstruction implements Instruction {
 
     FORWARD("A"){
         @Override
@@ -35,7 +33,7 @@ public enum BasicInstruction implements Instruction {
         this.code = code;
     }
 
-    public static BasicInstruction ofCode(String code){
-        return Arrays.stream(values()).filter(instruction -> instruction.code.equals(code)).findFirst().orElse(DO_NOTHING);
+    public boolean hasCode(String code) {
+        return this.code.equals(code);
     }
 }

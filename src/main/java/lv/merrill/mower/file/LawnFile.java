@@ -29,7 +29,7 @@ public class LawnFile {
         for (int i = 0; i < mowers.size(); i += 2) {
             Mower mower = mower(lawn, mowers.get(i).split(" "));
 
-            List<BasicInstruction> instructions = instructions(mowers.get(i + 1).split(""));
+            List<Instruction> instructions = instructions(mowers.get(i + 1).split(""));
             instructions.forEach(mower::execute);
 
             Position lastPosition = mower.position();
@@ -39,9 +39,9 @@ public class LawnFile {
         return appender.toString();
     }
 
-    private static List<BasicInstruction> instructions(String[] split) {
+    private static List<Instruction> instructions(String[] split) {
         return stream(split)
-                .map(BasicInstruction::ofCode).toList();
+                .map(Instruction::ofCode).toList();
     }
 
     private Mower mower(Lawn lawn, String[] mowerLine) {

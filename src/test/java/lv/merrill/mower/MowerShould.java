@@ -20,7 +20,7 @@ public class MowerShould {
     })
     public void acceptance_test(int lawnX, int lawnY, int initialX, int initialY, String initialDirection, String instructionsAsString, int lastX, int lastY, String lastDirection) {
         Mower mower = new Mower(new Position(new Coordinate(initialX, initialY), initialDirection), new Lawn(new Coordinate(lawnX, lawnY).asDimension()));
-        Stream<BasicInstruction> instruction = parse(instructionsAsString);
+        Stream<Instruction> instruction = parse(instructionsAsString);
 
         instruction.forEach(mower::execute);
 
@@ -29,11 +29,11 @@ public class MowerShould {
                 .isEqualTo(new Position(new Coordinate(lastX, lastY), lastDirection));
     }
 
-    private static Stream<BasicInstruction> parse(String instructionsAsString) {
+    private static Stream<Instruction> parse(String instructionsAsString) {
         return instructionsAsString.chars()
                 .mapToObj(value -> (char) value)
                 .map(String::valueOf)
-                .map(BasicInstruction::ofCode);
+                .map(Instruction::ofCode);
     }
 
     private static Stream<Arguments> finish_at_1_3_N_by_starting_at_1_2_N_executing_GAGAGAGAA_on_5_5_lawn() {
@@ -57,7 +57,7 @@ public class MowerShould {
     public void turn_left(String initialDirection, String expectedDirection) {
         Mower mower = new Mower(new Position(new Coordinate(0, 0), initialDirection), new Lawn(new Dimension(5, 5)));
 
-        mower.execute(BasicInstruction.ofCode("G"));
+        mower.execute(Instruction.ofCode("G"));
 
         assertThat(mower)
                 .extracting(Mower::position)
@@ -74,7 +74,7 @@ public class MowerShould {
     public void turn_right(String initialDirection, String expectedDirection) {
         Mower mower = new Mower(new Position(new Coordinate(0, 0), initialDirection), new Lawn(new Dimension(5, 5)));
 
-        mower.execute(BasicInstruction.ofCode("D"));
+        mower.execute(Instruction.ofCode("D"));
 
         assertThat(mower)
                 .extracting(Mower::position)
@@ -91,7 +91,7 @@ public class MowerShould {
     public void forward(int initialX, int initialY, String initialDirection, int expectedX, int expectedY, String expectedDirection) {
         Mower mower = new Mower(new Position(new Coordinate(initialX, initialY), initialDirection), new Lawn(new Dimension(5, 5)));
 
-        mower.execute(BasicInstruction.ofCode("A"));
+        mower.execute(Instruction.ofCode("A"));
 
         assertThat(mower)
                 .extracting(Mower::position)
@@ -108,7 +108,7 @@ public class MowerShould {
     public void ignore_forward_instruction_on_toward_edge_and_stay_at_the_same_position(int x, int y, String direction) {
         Mower mower = new Mower(new Position(new Coordinate(x, y), direction), new Lawn((new Coordinate(4, 4).asDimension())));
 
-        mower.execute(BasicInstruction.ofCode("A"));
+        mower.execute(Instruction.ofCode("A"));
 
         assertThat(mower)
                 .extracting(Mower::position)
@@ -119,7 +119,7 @@ public class MowerShould {
     public void ignore_unknown_instruction_and_stay_at_the_actual_position() {
         Mower mower = new Mower(new Position(new Coordinate(0, 0), NORTH), new Lawn(new Coordinate(4, 4).asDimension()));
 
-        mower.execute(BasicInstruction.ofCode("X"));
+        mower.execute(Instruction.ofCode("X"));
 
         assertThat(mower)
                 .extracting(Mower::position)
