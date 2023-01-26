@@ -36,10 +36,14 @@ public enum Direction {
     private final String code;
 
     public Direction left() {
-        return values()[(values().length + this.ordinal() - 1) % values().length];
+        return turnTo(-1);
     }
     public Direction right() {
-        return values()[(values().length + this.ordinal() + 1) % values().length];
+        return turnTo(1);
+    }
+
+    private Direction turnTo(int variation) {
+        return values()[(values().length + this.ordinal() + variation) % values().length];
     }
 
     public abstract Coordinate step();
