@@ -29,6 +29,9 @@ public enum Direction {
         }
     };
 
+    private static final int LEFT_VARIATION = -1;
+    private static final int RIGHT_VARIATION = 1;
+
     Direction(String code) {
         this.code = code;
     }
@@ -36,10 +39,10 @@ public enum Direction {
     private final String code;
 
     public Direction left() {
-        return turnTo(-1);
+        return turnTo(LEFT_VARIATION);
     }
     public Direction right() {
-        return turnTo(1);
+        return turnTo(RIGHT_VARIATION);
     }
 
     private Direction turnTo(int variation) {
