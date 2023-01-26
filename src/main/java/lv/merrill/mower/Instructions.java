@@ -1,12 +1,28 @@
 package lv.merrill.mower;
 
-import java.util.stream.Stream;
+import java.util.List;
 
-public class Instructions {
-    public static Stream<Instruction> ofCodes(String instructionsAsString) {
-        return instructionsAsString.chars()
+public class Instructions implements Instruction {
+
+    private List<Instruction> instructions;
+
+    public Instructions(List<Instruction> instructions) {
+        this.instructions = instructions;
+    }
+
+    public static Instruction ofCodes(String instructionsAsString) {
+        return new Instructions(instructionsAsString.chars()
                 .mapToObj(value -> (char) value)
                 .map(String::valueOf)
-                .map(Instruction::ofCode);
+                .map(Instruction::ofCode)
+                .toList());
+    }
+
+    @Override
+    public Position execute(Position position, Lawn lawn) {
+        for (Instruction i : instructions) {
+            position = i.execute(position, lawn);
+        }
+        return position;
     }
 }

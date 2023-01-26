@@ -20,9 +20,9 @@ public class MowerShould {
     })
     public void acceptance_test(int lawnX, int lawnY, int initialX, int initialY, String initialDirection, String instructionsAsString, int lastX, int lastY, String lastDirection) {
         Mower mower = new Mower(new Position(new Coordinate(initialX, initialY), initialDirection), new Lawn(new Coordinate(lawnX, lawnY).asDimension()));
-        Stream<Instruction> instruction = Instructions.ofCodes(instructionsAsString);
+        Instruction instructions = Instructions.ofCodes(instructionsAsString);
 
-        instruction.forEach(mower::execute);
+        mower.execute(instructions);
 
         assertThat(mower)
                 .extracting(Mower::position)
