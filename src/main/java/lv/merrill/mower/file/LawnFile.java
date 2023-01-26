@@ -60,7 +60,7 @@ public class LawnFile {
     private Lawn lawn() {
         int lawnX = parseInt(lines.get(0).split(" ")[0]);
         int lawnY = parseInt(lines.get(0).split(" ")[1]);
-        Dimension dimension = new Dimension(new Coordinate(lawnX, lawnY));
+        Dimension dimension = new Coordinate(lawnX, lawnY).asDimension();
         return new Lawn(dimension);
     }
 }

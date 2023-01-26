@@ -19,7 +19,7 @@ public class MowerShould {
             "lawn_of_5_5_and_mower_at_3_3_E_with_instructions_AADAADADDA_should_finish_at_5_1_E",
     })
     public void acceptance_test(int lawnX, int lawnY, int initialX, int initialY, String initialDirection, String instructionsAsString, int lastX, int lastY, String lastDirection) {
-        Mower mower = new Mower(new Position(new Coordinate(initialX, initialY), initialDirection), new Lawn(new Dimension(new Coordinate(lawnX, lawnY))));
+        Mower mower = new Mower(new Position(new Coordinate(initialX, initialY), initialDirection), new Lawn(new Coordinate(lawnX, lawnY).asDimension()));
         Stream<Instruction> instruction = parse(instructionsAsString);
 
         instruction.forEach(mower::execute);
@@ -106,7 +106,7 @@ public class MowerShould {
             "0, 0, W",
     })
     public void ignore_forward_instruction_on_toward_edge_and_stay_at_the_same_position(int x, int y, String direction) {
-        Mower mower = new Mower(new Position(new Coordinate(x, y), direction), new Lawn(new Dimension(new Coordinate(4, 4))));
+        Mower mower = new Mower(new Position(new Coordinate(x, y), direction), new Lawn((new Coordinate(4, 4).asDimension())));
 
         mower.execute(Instruction.ofCode("A"));
 
@@ -117,7 +117,7 @@ public class MowerShould {
 
     @Test
     public void ignore_unknown_instruction_and_stay_at_the_actual_position() {
-        Mower mower = new Mower(new Position(new Coordinate(0, 0), NORTH), new Lawn(new Dimension(new Coordinate(4, 4))));
+        Mower mower = new Mower(new Position(new Coordinate(0, 0), NORTH), new Lawn(new Coordinate(4, 4).asDimension()));
 
         mower.execute(Instruction.ofCode("X"));
 

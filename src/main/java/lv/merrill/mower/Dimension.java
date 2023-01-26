@@ -10,10 +10,6 @@ public class Dimension {
         this.height = height;
     }
 
-    public Dimension(Coordinate coordinate) {
-        this(coordinate.asDimension().width, coordinate.asDimension().height);
-    }
-
     public boolean include(Dimension dimension) {
         return dimension.width >= 1
                 && dimension.height >= 1
