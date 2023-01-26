@@ -9,7 +9,7 @@ public class Mower {
         this.position = initialPosition;
         this.lawn = lawn;
     }
-    public void execute(Instruction instruction) {
+    public void execute(BasicInstruction instruction) {
         position = instruction.execute(position, lawn);
     }
 
